@@ -32,13 +32,18 @@
 	color: black;
 	font-size: 1.1em;
 	padding: 5px;
+	cursor: pointer;
 }
 
 .navbar__btn {
-	border: 3px hsl(211, 100%, 45%) solid;
-	border-radius: 15px;
-	background-color: hsl(211, 100%, 35%);
-	padding: 5px;
-	color: white;
+	border: 3px lightgray solid;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0);
+	padding: 8px;
+	color: hsl(0, 0%, 83%);
 	margin-left: auto;
+}
+
+.navbar a {
+	text-decoration: none;
 }
