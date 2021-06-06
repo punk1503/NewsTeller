@@ -1,0 +1,39 @@
+.navbar {
+	grid-row: 1/2;
+	height: 40px;
+	background-color: black;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.navbar * {
+	margin-right: 10px;
+}
+
+.navbar__title {
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+}
+
+.navbar__search {
+	line-height: 1.2em;
+	border: 3px gainsboro solid;
+	border-radius: 15px;
+	padding: 5px;
+}
+
+.search__confirm {
+	border: 3px hsl(0, 0%, 75%) solid;
+	border-radius: 10px;
+	background-color: hsl(0, 0%, 95%);
+	color: black;
+	font-size: 1.1em;
+	padding: 5px;
+}
+
+.navbar_btn {
+
+}

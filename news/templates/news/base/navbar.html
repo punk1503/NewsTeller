@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'news/css/navbar.css' %}">
+
+<nav class="navbar">
+	<a href="{% url 'index' %}" class="navbar__title">NewsTeller</a>
+	<form> <!--TODO: add action and method attributes-->
+		<input type="text" class="navbar__search" placeholder="Article title">
+		<button class="search__confirm">Search</button>
+	</form>
+	<a class="navbar__btn">New article</a>
+</nav>
