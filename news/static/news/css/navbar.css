@@ -2,10 +2,15 @@
 	grid-row: 1/2;
 	height: 40px;
 	background-color: black;
-	padding: 10px;
+	padding: 15px 5px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+}
+
+.navbar a {
+	text-decoration: none;
+	color: white;
 }
 
 .navbar * {
@@ -44,6 +49,10 @@
 	margin-left: auto;
 }
 
-.navbar a {
-	text-decoration: none;
+.navbar__avatar {
+	width: 50px;
+	height: 50px;
+	border: 3px white solid;
+	border-radius: 50%;
+	margin: 0;
 }
