@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'news/css/navbar.css' %}">
+<!--TODO: add hrefs to all links -->
+<nav class="navbar">
+	<a href="{% url 'index' %}" class="navbar__title">NewsTeller</a>
+	<form> <!--TODO: add action and method attributes-->
+		<input type="text" class="navbar__search" placeholder="Article title">
+		<button class="search__confirm">Search</button>
+	</form>
+	<a href="#" role="button" class="navbar__btn">New article</a>
+	{% if request.user.is_authenticated %}
+		<img class="navbar__avatar" src="https://placekitten.com/400/400" alt="{{ request.user.username }}">
+	{% else %}
+		<a href="#">Sign in</a>
+	{% endif %}
+</nav>
