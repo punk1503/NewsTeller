@@ -10,3 +10,7 @@ body {
 body * {
 	font-family: 'Roboto', sans-serif;
 }
+
+main {
+	padding: 10px;
+}
