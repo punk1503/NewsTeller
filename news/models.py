@@ -8,7 +8,6 @@ class Article(models.Model):
     A model that represents news report or some article
     """
     class Meta:
-        ordering = ['publication_date']
         verbose_name = 'Article'
         verbose_name_plural = 'Articles'
 
