@@ -1,0 +1,10 @@
+{% extends 'news/base/base.html' %}
+
+{% block content %}
+	 <h2>Article creation</h2>
+	 <form method="POST">
+		 {% csrf_token %}
+		 {{ article_form }}
+		 <button type="submit">Create Article</button>
+	 </form>
+{% endblock %}

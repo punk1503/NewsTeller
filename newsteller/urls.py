@@ -21,5 +21,6 @@ from news import views
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
 	path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+	path('new/', views.article_creation, name='article_creation')
 ]
