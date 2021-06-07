@@ -8,6 +8,6 @@ class ArticleForm(forms.ModelForm):
 		fields = ['article_title', 'article_text']
 
 		widgets = {
-			'article_title': forms.TextInput(),
-			'article_text': forms.Textarea(attrs={'cols': 30, 'rows': 5})
+			'article_title': forms.TextInput(attrs={'class': 'article__title', 'type':'text', 'placeholder': 'Article title'}),
+			'article_text': forms.Textarea(attrs={'class': 'article__text', 'placeholder': 'Article text', 'cols': 30, 'rows': 10})
 		}

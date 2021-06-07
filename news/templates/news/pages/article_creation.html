@@ -1,10 +1,15 @@
 {% extends 'news/base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'news/css/article_creation.css' %}">
+{% endblock %}
 
 {% block content %}
-	 <h2>Article creation</h2>
-	 <form method="POST">
-		 {% csrf_token %}
-		 {{ article_form }}
-		 <button type="submit">Create Article</button>
-	 </form>
+<form method="POST" class="article">
+	{% csrf_token %}
+	<h2>New article</h2>
+	{{ article_form }}
+	<button class="article__submit">Post article</button>
+</form>
 {% endblock %}
