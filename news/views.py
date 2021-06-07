@@ -17,7 +17,7 @@ def article_creation(request):
         article_form = ArticleForm()
         context['article_form'] = article_form
     elif request.method == 'POST':
-        new_article = ArticleForm(request.POST)
+        new_article = ArticleForm(request.POST).save(commit=False)
         new_article.author = request.user
         new_article.publication_date = datetime.datetime.now().date()
         new_article.save()
