@@ -2,15 +2,23 @@
 <link rel="stylesheet" href="{% static 'news/css/navbar.css' %}">
 <!--TODO: add hrefs to all links -->
 <nav class="navbar">
-	<a href="{% url 'index' %}" class="navbar__title">NewsTeller</a>
-	<form> <!--TODO: add action and method attributes-->
-		<input type="text" class="navbar__search" placeholder="Article title">
-		<button class="search__confirm"><img src="{% static 'news/icons/search_white_24dp.svg' %}" alt=""></button>
-	</form>
-	<a href="{% url 'article_creation' %}" role="button" class="navbar__btn">New article</a>
-	{% if request.user.is_authenticated %}
-		<img class="navbar__avatar" src="https://placekitten.com/400/400" alt="{{ request.user.username }}">
-	{% else %}
-		<a href="#">Sign in</a>
-	{% endif %}
+	<div class="navbar__left">
+		<a href="{% url 'index' %}" class="navbar__title">NewsTeller</a>
+		<form> <!--TODO: add action and method attributes-->
+			<input type="text" class="navbar__search" placeholder="Article title">
+			<button class="search__confirm"><img src="{% static 'news/icons/search_white_24dp.svg' %}" alt=""></button>
+		</form>
+	</div>
+	<div class="navbar__right">
+		<a href="{% url 'article_creation' %}" role="button" class="navbar__btn">New article</a>
+		<div class="navbar__alternate-menu">
+
+		</div>
+		{% if request.user.is_authenticated %}
+			<img class="navbar__avatar" src="https://placekitten.com/400/400" alt="{{ request.user.username }}">
+		{% else %}
+			<a href="#">Sign in</a>
+		{% endif %}
+	</div>
+
 </nav>
