@@ -2,22 +2,29 @@
 <link rel="stylesheet" href="{% static 'news/css/navbar.css' %}">
 <!--TODO: add hrefs to all links -->
 <nav class="navbar">
+
 	<div class="navbar__left">
 		<a href="{% url 'index' %}" class="navbar__title">NewsTeller</a>
-		<form> <!--TODO: add action and method attributes-->
+
+		<form>
+			<!--TODO: add action and method attributes-->
 			<input type="text" class="navbar__search" placeholder="Article title">
-			<button class="search__confirm"><img src="{% static 'news/icons/search_white_24dp.svg' %}" alt=""></button>
+			<button class="search__confirm" type="submit">
+				<img src="{% static 'news/icons/search_white_24dp.svg' %}" alt="Search">
+			</button>
 		</form>
+
+		<a class="search__confirm" href="#" id="small_screen_search_link">
+			<img src="{% static 'news/icons/search_white_24dp.svg' %}" alt="Search">
+		</a>
 	</div>
+
 	<div class="navbar__right">
 		<a href="{% url 'article_creation' %}" role="button" class="navbar__btn">New article</a>
-		<div class="navbar__alternate-menu">
-
-		</div>
 		{% if request.user.is_authenticated %}
-			<img class="navbar__avatar" src="https://placekitten.com/400/400" alt="{{ request.user.username }}">
+		<img class="navbar__avatar" src="https://placekitten.com/400/400" alt="{{ request.user.username }}">
 		{% else %}
-			<a href="#">Sign in</a>
+		<a href="#">Sign in</a>
 		{% endif %}
 	</div>
 
