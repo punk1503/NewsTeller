@@ -5,7 +5,7 @@
 	<a href="{% url 'index' %}" class="navbar__title">NewsTeller</a>
 	<form> <!--TODO: add action and method attributes-->
 		<input type="text" class="navbar__search" placeholder="Article title">
-		<button class="search__confirm">Search</button>
+		<button class="search__confirm"><img src="{% static 'news/icons/search_white_24dp.svg' %}" alt=""></button>
 	</form>
 	<a href="{% url 'article_creation' %}" role="button" class="navbar__btn">New article</a>
 	{% if request.user.is_authenticated %}
