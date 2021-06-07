@@ -6,20 +6,22 @@ import datetime
 
 
 def index(request):
-	return render(request, 'news/pages/index.html')
+    context = {'pagename': 'Main'}
+    return render(request, 'news/pages/index.html', context)
+
 
 def article_creation(request):
-	context = {}
-	if request.method == 'GET':
-		article_form = ArticleForm()
-		context['article_form'] = article_form
-	elif request.method == 'POST':
-		new_article = ArticleForm(request.POST)
-		new_article.author = request.user
-		new_article.publication_date = datetime.datetime.now().date()
-		new_article.save()
+    context = {'pagename': 'New article'}
 
-		return redirect('index')
+    if request.method == 'GET':
+        article_form = ArticleForm()
+        context['article_form'] = article_form
+    elif request.method == 'POST':
+        new_article = ArticleForm(request.POST)
+        new_article.author = request.user
+        new_article.publication_date = datetime.datetime.now().date()
+        new_article.save()
 
-	return render(request, 'news/pages/article_creation.html', context)
+        return redirect('index')
 
+    return render(request, 'news/pages/article_creation.html', context)
