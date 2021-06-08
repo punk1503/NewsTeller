@@ -6,9 +6,14 @@
 	<button type="submit">Search articles</button>
 </form>
 <div class="articles">
-	{% for article in matching_articles %}
-	<h4>{{ article.article_title }}</h4>
-	<span>{{ article.author.first_name }} {{ article.author.last_name }} - {{ article.publication_date }}</span>
-	{% endfor %}
+	<ul>
+		{% for article in matching_articles %}
+		<li>
+			<a href="{% url 'article_overview' article.id %}">{{ article.article_title }}</a>
+			<br>
+			<span>{{ article.author.first_name }} {{ article.author.last_name }} - {{ article.publication_date }}</span>
+		</li>
+		{% endfor %}
+	</ul>
 </div>
 {% endblock %}
