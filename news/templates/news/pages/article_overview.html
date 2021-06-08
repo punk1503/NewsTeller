@@ -9,7 +9,9 @@
 <div class="article__main">
 	<h2>{{ article.article_title }}</h2>
 	<!--TODO: add href to the author profile-->
-	<span><a href="#">{{ article.author.first_name }} {{ article.author.last_name }}</a> - {{ article.publication_date }}</span>
+	<span><a class="author__link" href="#">{{ article.author.first_name }} {{ article.author.last_name }}</a> - {{ article.publication_date }}</span>
+	<hr>
 	<p>{{ article.article_text }}</p>
+	<!--TODO: add likes and comments-->
 </div>
 {% endblock %}

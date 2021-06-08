@@ -1,4 +1,9 @@
 .article__main {
 	margin: auto;
+	padding: 0px 15px;
 	max-width: 800px;
+}
+
+.author__link, .author__link:visited {
+	color: hsl(0, 0%, 40%);
 }
