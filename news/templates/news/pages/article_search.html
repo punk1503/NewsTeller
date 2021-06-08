@@ -1,0 +1,14 @@
+{% extends 'news/base/base.html' %}
+
+{% block content %}
+<form method="GET">
+	<input type="text" name="article_title">
+	<button type="submit">Search articles</button>
+</form>
+<div class="articles">
+	{% for article in matching_articles %}
+	<h4>{{ article.article_title }}</h4>
+	<span>{{ article.author.first_name }} {{ article.author.last_name }} - {{ article.publication_date }}</span>
+	{% endfor %}
+</div>
+{% endblock %}
