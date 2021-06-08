@@ -1,3 +1,4 @@
+from news.models import Article
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -25,3 +26,9 @@ def article_creation(request):
         return redirect('index')
 
     return render(request, 'news/pages/article_creation.html', context)
+
+def article_overview(request, article_id):
+	context = {'pagename': 'Article'}
+	article = Article.objects.get(id=article_id)
+	context['article'] = article
+	return render(request, 'news/pages/article_overview.html', context)
