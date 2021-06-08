@@ -43,6 +43,7 @@ def article_search(request):
 	if request.method == 'GET':
 		article_title = request.GET.get('article_title', None)
 		if article_title:
+			# matching_articles = match_articles(article_title)
 			try:
 				matching_articles = Article.objects.filter(article_title=article_title)
 			except Article.DoesNotExist:
