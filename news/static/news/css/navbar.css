@@ -2,7 +2,7 @@
 	grid-row: 1/2;
 	height: 40px;
 	background-color: black;
-	padding: 15px 5px;
+	padding: 15px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
