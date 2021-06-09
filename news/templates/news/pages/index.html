@@ -1,5 +1,15 @@
 {% extends 'news/base/base.html' %}
 
 {% block content %}
-<h1>Lattest news :3</h1>
+<div class="main">
+	<h1>Lattest news</h1>
+	<ul class="news-list">
+		{% for article in lattest_articles %}
+		<li class="news-list__item">
+			<h3>{{ article.article_title }}</h3>
+			<span><a href="#">{{ article.author }}</a> - {{ article.publication_date }}</span>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
 {% endblock %}
