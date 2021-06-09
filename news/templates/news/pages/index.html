@@ -1,13 +1,17 @@
 {% extends 'news/base/base.html' %}
-
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'news/css/index.css' %}">
+{% endblock %}
 {% block content %}
 <div class="main">
 	<h1>Lattest news</h1>
 	<ul class="news-list">
 		{% for article in lattest_articles %}
-		<li class="news-list__item">
-			<h3>{{ article.article_title }}</h3>
-			<span><a href="#">{{ article.author }}</a> - {{ article.publication_date }}</span>
+		<li class="news-list__article">
+			<h4 class="article__title">{{ article.article_title }}</h4>
+		<p class="article__preview-text">{{ article.article_text|truncatewords:10 }}</p>
+			<span><a class="author-link" href="#">{{ article.author.first_name }} {{ article.author.last_name }}</a> - {{ article.publication_date }}</span>
 		</li>
 		{% endfor %}
 	</ul>
