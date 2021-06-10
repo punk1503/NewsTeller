@@ -4,7 +4,19 @@ from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-	pass
+	class Meta:
+		verbose_name = 'Custom user'
+		verbose_name_plural = 'Custom users'
+
+	age = models.IntegerField(default=0, verbose_name='User age')
+	avatar_blob = models.TextField(default='', verbose_name='User profile picture blob')
+	is_author = models.BooleanField(default=False)
+
+	# TODO: add email validation to become an author
+
+	def __str__(self) -> str:
+		return self.username
+
 
 class Article(models.Model):
     """
