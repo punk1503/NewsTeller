@@ -46,8 +46,11 @@ def registration(request):
 		context['user_form'] = forms.UserForm()
 	elif request.method == 'POST':
 		user_form = forms.UserForm(request.POST)
+		context['user_form'] = user_form
 		if user_form.is_valid():
 			new_user = user_form.save()
 			return redirect('index')
+		else:
+			print(user_form.errors.as_json())
 
 	return render(request, 'news/pages/registration.html', context)

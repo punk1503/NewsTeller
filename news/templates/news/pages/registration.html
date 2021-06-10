@@ -7,12 +7,16 @@
 
 {% block content %}
 <form method="POST" class="main">
+	{% csrf_token %}
 	<h3>Registration</h3>
-	<input type="text" class="custom-input" placeholder="Username">
-	<input type="text" class="custom-input" placeholder="First name">
-	<input type="text" class="custom-input" placeholder="Last name">
-	<span style="color: hsl(0, 0%, 30%);">Profile picture</span>
-	<input type="file">
+	{% for field in user_form.visible_fields %}
+		{{ field.errors }}
+		{{ field.label }}
+		{{ field }}
+	{% endfor %}
+	{% for field in user_form.hidden_fields %}
+		{{ field }}
+	{% endfor %}
 	<button type="submit" class="custom-submit">Create account</button>
 </form>
 {% endblock %}
