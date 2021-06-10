@@ -1,6 +1,23 @@
 from django import forms
-from django.forms import fields
-from news.models import Article
+from django.db import models
+from django.forms import fields, widgets
+from news.models import Article, CustomUser
+
+class UserForm(forms.ModelForm):
+	class Meta:
+		model = CustomUser
+		fields = [
+			'username',
+			'first_name',
+			'last_name',
+			'birth_date',
+			'avatar_blob',
+			'email'
+		]
+
+		widgets = {
+			'avatar_blob': forms.HiddenInput(attrs={'id': 'avatar_input'}),
+		}
 
 class ArticleForm(forms.ModelForm):
 	class Meta:
