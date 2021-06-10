@@ -8,13 +8,13 @@ class CustomUser(AbstractUser):
 		verbose_name = 'Custom user'
 		verbose_name_plural = 'Custom users'
 
-	birth_date = models.DateField(verbose_name='User birth date')
-	avatar_blob = models.TextField(default='', verbose_name='User profile picture blob')
+	birth_date = models.DateField(verbose_name='Birth date')
+	avatar_blob = models.TextField(default='', blank=True, verbose_name='User profile picture blob')
 	is_author = models.BooleanField(default=False)
-	username = models.CharField(max_length=15, unique=True)
+	username = models.CharField(max_length=15, unique=True, verbose_name='Username')
 	USERNAME_FIELD = 'username'
 
-	REQUIRED_FIELDS = ['birth_date']
+	REQUIRED_FIELDS = ['birth_date', 'first_name', 'last_name']
 
 	# TODO: add email validation to become an author
 

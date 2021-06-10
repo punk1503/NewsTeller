@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from newsteller import forms
 from news import models
 import datetime
-
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -13,7 +13,7 @@ def index(request):
 	}
 	return render(request, 'news/pages/index.html', context)
 
-
+@login_required
 def article_creation(request):
 	context = {'pagename': 'New article'}
 
@@ -43,7 +43,7 @@ def registration(request):
 	context = {'pagename': 'Registration'}
 
 	if request.method == 'GET':
-		user_form = forms.UserForm()
+		context['user_form'] = forms.UserForm()
 	elif request.method == 'POST':
 		user_form = forms.UserForm(request.POST)
 		if user_form.is_valid():

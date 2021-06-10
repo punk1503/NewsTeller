@@ -1,0 +1,11 @@
+{% extends 'news/base/base.html' %}
+
+{% block content %}
+<h3>Registration</h3>
+<form method="POST">
+	{% csrf_token %}
+	{{ user_form }}
+	<br>
+	<button type="submit">Create account</button>
+</form>
+{% endblock %}
