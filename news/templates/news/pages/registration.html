@@ -1,11 +1,18 @@
 {% extends 'news/base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'news/css/registration.css' %}">
+{% endblock %}
 
 {% block content %}
 <h3>Registration</h3>
-<form method="POST">
-	{% csrf_token %}
-	{{ user_form }}
-	<br>
-	<button type="submit">Create account</button>
+<form method="POST" class="main">
+	<input type="text" class="custom-input" placeholder="Username">
+	<input type="text" class="custom-input" placeholder="First name">
+	<input type="text" class="custom-input" placeholder="Last name">
+	<span style="color: hsl(0, 0%, 30%);">Profile picture</span>
+	<input type="file">
+	<button type="submit" class="custom-submit">Create account</button>
 </form>
 {% endblock %}
