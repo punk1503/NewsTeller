@@ -74,13 +74,13 @@
 	justify-self: flex-start;
 }
 
-@media (max-width: 546px) {
+@media (max-width: 560px) {
 	.navbar > .navbar__left > form{
 		display: none;
 	}
 }
 
-@media (min-width: 546px) {
+@media (min-width: 560px) {
 	#small_screen_search_link {
 		display: none;
 	}
