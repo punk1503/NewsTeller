@@ -13,7 +13,7 @@ class UserForm(forms.ModelForm):
 			'password',
 			'first_name',
 			'last_name',
-			'avatar_blob',
+			'avatar',
 			'email'
 		]
 
@@ -22,7 +22,6 @@ class UserForm(forms.ModelForm):
 			'password': forms.PasswordInput(attrs={'class': 'custom-input'}),
 			'first_name': forms.TextInput(attrs={'class': 'custom-input'}),
 			'last_name': forms.TextInput(attrs={'class': 'custom-input'}),
-			'avatar_blob': forms.HiddenInput(attrs={'id': 'avatar_input'}),
 			'email': forms.EmailInput(attrs={'class': 'custom-input'})
 		}
 
