@@ -22,7 +22,11 @@
 	<div class="navbar__right">
 		<a href="{% url 'article_creation' %}" role="button" class="navbar__btn">New article</a>
 		{% if request.user.is_authenticated %}
-		<img class="navbar__avatar" src="https://placekitten.com/400/400" alt="{{ request.user.username }}">
+			{% if request.user.avatar %}
+			<img class="navbar__avatar" src="{{ request.user.avatar.url }}">
+			{% else %}
+			<span style="color: white;">{{ request.user.username }}</span>
+			{% endif %}
 		{% else %}
 		<a href="#">Sign in</a>
 		{% endif %}

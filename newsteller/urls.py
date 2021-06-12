@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 from news import views
 
 urlpatterns = [
@@ -24,5 +26,5 @@ urlpatterns = [
     path('', views.index, name='index'),
 	path('new/', views.article_creation, name='article_creation'),
 	path('article/<int:article_id>', views.article_overview, name='article_overview'),
-	path('registration/', views.registration, name='registration')
-]
+	path('registration/', views.registration, name='registration'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

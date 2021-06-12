@@ -4,7 +4,6 @@ from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import AbstractUser, User
 from django.conf import settings
 import os
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class CustomUser(AbstractUser):
@@ -15,9 +14,6 @@ class CustomUser(AbstractUser):
 	def set_avatar_path(instance, filename):
 		upload_to = 'profiles'
 		return os.path.join(upload_to, (f'{instance.username}_{filename}'))
-
-	# def save(self, *args, **kwargs):
-	# 	super(CustomUser, self).save(*args, **kwargs)
 
 	avatar = models.ImageField(blank=True, null=True, upload_to=set_avatar_path)
 	is_author = models.BooleanField(default=False)
