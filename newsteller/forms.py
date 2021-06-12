@@ -40,14 +40,9 @@ class UserForm(forms.ModelForm):
 		return user
 
 class LoginForm(forms.Form):
-	username = forms.CharField()
-	password = forms.CharField()
+	username = forms.CharField(widget=forms.TextInput(attrs={'class': 'custom-input', 'type':'text', 'placeholder': 'Username'}))
+	password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'custom-input', 'type':'text', 'placeholder': 'Password'}))
 
-	class Meta:
-		widgets = {
-			'username': forms.TextInput(attrs={'class': 'article__title', 'type':'text', 'placeholder': 'Username'}),
-			'password': forms.PasswordInput(attrs={'class': 'article__title', 'type':'text', 'placeholder': 'Password'}),
-		}
 
 class ArticleForm(forms.ModelForm):
 	class Meta:

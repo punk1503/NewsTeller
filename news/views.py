@@ -64,13 +64,10 @@ def login_page(request):
 		context['form'] = forms.LoginForm()
 	elif request.method == 'POST':
 		form = forms.LoginForm(request.POST)
+		context['form'] = form
 		if form.is_valid():
 			user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
 			if user is not None:
 				login(request, user)
 				return redirect('index')
-			context['form'] = form
-
-		else:
-			print(form.errors)
 	return render(request, 'news/pages/login.html', context)

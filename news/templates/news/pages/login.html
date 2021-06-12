@@ -8,14 +8,18 @@
 
 {% block content %}
 	{% if form.errors %}
-		<p>Your username and password didn't match. Please try again.</p>
+		<p>Incorrect username or password<p>
 	{% endif %}
 
 	<form method="post" action="{% url 'login' %}" class="main">
 		{% csrf_token %}
 		<h3>Login</h3>
 		{{ form.errors }}
-		{{ form }}
+		{% for field in form %}
+			{{ field.label }}
+			{{ field }}
+		{% endfor %}
 		<button type="submit" class="custom-submit">Login</button>
+		<span>Don't have an account? <a href="{% url 'registration' %}">Create one</a></span>
 	</form>
 {% endblock %}
