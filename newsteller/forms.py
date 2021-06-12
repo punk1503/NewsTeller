@@ -17,6 +17,12 @@ class UserForm(forms.ModelForm):
 			'email'
 		]
 
+		error_messages = {
+			'username': {
+				'unique': ('This username is already taken')
+			}
+		}
+
 		widgets = {
 			'username': forms.TextInput(attrs={'class': 'custom-input'}),
 			'password': forms.PasswordInput(attrs={'class': 'custom-input'}),

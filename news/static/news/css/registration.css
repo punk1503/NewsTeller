@@ -34,3 +34,12 @@
 	background-color: black;
 }
 
+.errorlist {
+	border: 3px hsl(0, 80%, 50%) solid;
+	border-radius: 15px;
+	padding: 10px 25px;
+}
+
+.errorlist li {
+	color: hsl(0, 70%, 50%);
+}
