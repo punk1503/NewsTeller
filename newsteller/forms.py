@@ -31,6 +31,14 @@ class UserForm(forms.ModelForm):
 			'email': forms.EmailInput(attrs={'class': 'custom-input'})
 		}
 
+	def save(self, commit=True):
+		# Save the provided password in hashed format
+		user = super(UserForm, self).save(commit=False)
+		user.set_password(self.cleaned_data["password"])
+		if commit:
+			user.save()
+		return user
+
 class LoginForm(forms.Form):
 	username = forms.CharField()
 	password = forms.CharField()
