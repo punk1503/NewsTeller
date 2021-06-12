@@ -46,7 +46,7 @@ def registration(request):
 	if request.method == 'GET':
 		context['user_form'] = forms.UserForm()
 	elif request.method == 'POST':
-		user_form = forms.UserForm(request.POST)
+		user_form = forms.UserForm(request.POST, request.FILES)
 		if user_form.is_valid():
 			new_user = user_form.save()
 			login(request, new_user)

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<form method="POST" class="main">
+<form method="POST" class="main" enctype='multipart/form-data'>
 	{% csrf_token %}
 	<h3>Registration</h3>
 	{% for field in user_form.visible_fields %}
