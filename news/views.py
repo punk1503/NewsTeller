@@ -1,3 +1,4 @@
+from typing import ContextManager
 from django.shortcuts import redirect, render
 from newsteller import forms
 from news import models
@@ -37,7 +38,6 @@ def article_overview(request, article_id):
 	context['article'] = article
 	return render(request, 'news/pages/article_overview.html', context)
 
-
 def registration(request):
 	if request.user.is_authenticated:
 		return redirect('index')
@@ -54,3 +54,23 @@ def registration(request):
 		else:
 			context['user_form'] = user_form
 	return render(request, 'news/pages/registration.html', context)
+
+def login_page(request):
+	context = {'pagename': 'Sign in'}
+	if request.user.is_authenticated:
+		return redirect('index')
+
+	if request.method == 'GET':
+		context['form'] = forms.LoginForm()
+	elif request.method == 'POST':
+		form = forms.LoginForm(request.POST)
+		if form.is_valid():
+			user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+			if user is not None:
+				login(request, user)
+				return redirect('index')
+			context['form'] = form
+
+		else:
+			print(form.errors)
+	return render(request, 'news/pages/login.html', context)

@@ -2,21 +2,21 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'news/css/registration.css' %}">
+	<link rel="stylesheet" href="{% static 'news/css/registration.css' %}">
 {% endblock %}
 
 {% block content %}
-<form method="POST" class="main" enctype='multipart/form-data'>
-	{% csrf_token %}
-	<h3>Registration</h3>
-	{% for field in user_form.visible_fields %}
-		{{ field.errors }}
-		{{ field.label }}
-		{{ field }}
-	{% endfor %}
-	{% for field in user_form.hidden_fields %}
-		{{ field }}
-	{% endfor %}
-	<button type="submit" class="custom-submit">Create account</button>
-</form>
+	<form method="POST" class="main" enctype='multipart/form-data'>
+		{% csrf_token %}
+		<h3>Registration</h3>
+		{% for field in user_form.visible_fields %}
+			{{ field.errors }}
+			{{ field.label }}
+			{{ field }}
+		{% endfor %}
+		{% for field in user_form.hidden_fields %}
+			{{ field }}
+		{% endfor %}
+		<button type="submit" class="custom-submit">Create account</button>
+	</form>
 {% endblock %}

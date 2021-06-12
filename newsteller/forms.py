@@ -31,6 +31,16 @@ class UserForm(forms.ModelForm):
 			'email': forms.EmailInput(attrs={'class': 'custom-input'})
 		}
 
+class LoginForm(forms.Form):
+	username = forms.CharField()
+	password = forms.CharField()
+
+	class Meta:
+		widgets = {
+			'username': forms.TextInput(attrs={'class': 'article__title', 'type':'text', 'placeholder': 'Username'}),
+			'password': forms.PasswordInput(attrs={'class': 'article__title', 'type':'text', 'placeholder': 'Password'}),
+		}
+
 class ArticleForm(forms.ModelForm):
 	class Meta:
 		model = Article

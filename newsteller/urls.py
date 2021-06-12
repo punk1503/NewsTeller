@@ -27,4 +27,5 @@ urlpatterns = [
 	path('new/', views.article_creation, name='article_creation'),
 	path('article/<int:article_id>', views.article_overview, name='article_overview'),
 	path('registration/', views.registration, name='registration'),
+	path('login/', views.login_page, name='login')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
