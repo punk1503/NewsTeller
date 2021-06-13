@@ -40,6 +40,6 @@
 	padding: 10px 25px;
 }
 
-.errorlist li {
+.errorlist > li {
 	color: hsl(0, 70%, 50%);
 }

@@ -2,6 +2,8 @@ from django import forms
 from django.db import models
 from django.forms import fields, widgets
 from news.models import Article, CustomUser
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
+
 
 class UserForm(forms.ModelForm):
 	birth_date = forms.DateField(required=False, widget=forms.HiddenInput())
@@ -42,6 +44,19 @@ class UserForm(forms.ModelForm):
 class LoginForm(forms.Form):
 	username = forms.CharField(widget=forms.TextInput(attrs={'class': 'custom-input', 'type':'text', 'placeholder': 'Username'}))
 	password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'custom-input', 'type':'text', 'placeholder': 'Password'}))
+
+	def clean(self):
+		try:
+			user = CustomUser.objects.get(username=self.cleaned_data['username'])
+		except ObjectDoesNotExist:
+			user = None
+
+		input_password = self.cleaned_data['password']
+		if user:
+			if not user.check_password(input_password):
+				raise ValidationError('Incorrect password')
+		else:
+			raise ValidationError("Username doesn't exists")
 
 
 class ArticleForm(forms.ModelForm):
