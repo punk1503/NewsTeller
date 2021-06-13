@@ -20,8 +20,7 @@ def article_creation(request):
 	context = {'pagename': 'New article'}
 
 	if request.method == 'GET':
-		article_form = forms.ArticleForm()
-		context['article_form'] = article_form
+		context['article_form'] = forms.ArticleForm()
 	elif request.method == 'POST':
 		new_article = forms.ArticleForm(request.POST).save(commit=False)
 		new_article.author = request.user
@@ -33,9 +32,10 @@ def article_creation(request):
 	return render(request, 'news/pages/article_creation.html', context)
 
 def article_overview(request, article_id):
-	context = {'pagename': 'Article'}
-	article = models.Article.objects.get(id=article_id)
-	context['article'] = article
+	context = {
+		'pagename': 'Article',
+		'article': models.Article.objects.get(id=article_id)
+	}
 	return render(request, 'news/pages/article_overview.html', context)
 
 def registration(request):
