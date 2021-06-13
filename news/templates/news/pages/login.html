@@ -11,9 +11,9 @@
 		{% csrf_token %}
 		<h3>Login</h3>
 		{% for field in form %}
-			{{ field.errors }}
-			{{ field.label }}
-			{{ field }}
+		{{ field.label }}
+		{{ field }}
+		{{ field.errors }}
 		{% endfor %}
 		<button type="submit" class="custom-submit">Login</button>
 		<span>Don't have an account? <a href="{% url 'registration' %}">Create one</a></span>

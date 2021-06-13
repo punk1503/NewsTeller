@@ -54,10 +54,9 @@ class LoginForm(forms.Form):
 		input_password = self.cleaned_data['password']
 		if user:
 			if not user.check_password(input_password):
-				raise ValidationError('Incorrect password')
+				self.add_error('password', 'Incorrect password')
 		else:
-			raise ValidationError("Username doesn't exists")
-
+			self.add_error('username', 'This username does not exist')
 
 class ArticleForm(forms.ModelForm):
 	class Meta:

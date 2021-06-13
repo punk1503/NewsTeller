@@ -10,9 +10,9 @@
 		{% csrf_token %}
 		<h3>Registration</h3>
 		{% for field in user_form.visible_fields %}
-			{{ field.errors }}
 			{{ field.label }}
 			{{ field }}
+			{{ field.errors }}
 		{% endfor %}
 		{% for field in user_form.hidden_fields %}
 			{{ field }}
