@@ -36,6 +36,8 @@ def article_overview(request, article_id):
 		'pagename': 'Article',
 		'article': models.Article.objects.get(id=article_id)
 	}
+	if request.method == 'POST' and request.user.is_authenticated:
+		context['article'].likers.add(request.user)
 	return render(request, 'news/pages/article_overview.html', context)
 
 def registration(request):

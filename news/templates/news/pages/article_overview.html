@@ -13,5 +13,13 @@
 	<hr>
 	<p>{{ article.article_text }}</p>
 	<!--TODO: add likes and comments-->
+	{% if user.is_authenticated %}
+		<form method="POST">
+			{% csrf_token %}
+			<span>Likes:{{ article.likers.all.count }}</span>
+			<br>
+			<button type="submit">Like</button>
+		</form>
+	{% endif %}
 </div>
 {% endblock %}
