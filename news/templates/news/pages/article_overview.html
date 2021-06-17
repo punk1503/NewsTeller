@@ -14,6 +14,9 @@
 	<p>{{ article.article_text }}</p>
 	<!--TODO: add likes and comments-->
 	<span>Likes:{{ article.likers.all.count }}</span>
+	{% if user in article.likers.all %}
+		<span>You liked this article</span>
+	{% endif %}
 	{% if user.is_authenticated %}
 		<form method="POST">
 			{% csrf_token %}
