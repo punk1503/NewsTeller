@@ -37,7 +37,10 @@ def article_overview(request, article_id):
 		'article': models.Article.objects.get(id=article_id)
 	}
 	if request.method == 'POST' and request.user.is_authenticated:
-		context['article'].likers.add(request.user)
+		if request.user in context['article'].likers.all():
+			context['article'].likers.remove(request.user	)
+		else:
+			context['article'].likers.add(request.user)
 	return render(request, 'news/pages/article_overview.html', context)
 
 def registration(request):
