@@ -7,3 +7,12 @@
 .author__link, .author__link:visited {
 	color: hsl(0, 0%, 40%);
 }
+
+.like-btn {
+	border: none;
+	border-radius: 15px;
+	padding: 10px;
+	font-size: 1.1em;
+	background-color: hsl(0, 100%, 60%);
+	color: white;
+}

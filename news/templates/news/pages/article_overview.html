@@ -13,7 +13,7 @@
 	<hr>
 	<p>{{ article.article_text }}</p>
 	<!--TODO: add likes and comments-->
-	<span>Likes:{{ article.likers.all.count }}</span>
+	<span>Likes:<span id="likes_span">{{ article.likers.all.count }}</span></span>
 	{% if user in article.likers.all %}
 		<span>You liked this article</span>
 	{% endif %}
@@ -21,8 +21,13 @@
 		<form method="POST">
 			{% csrf_token %}
 			<br>
-			<button type="submit">Like</button>
+			<button type="submit" class="like-btn">Like</button>
 		</form>
+		<button onclick="send_request({{ user.id }})">Ajax Like</button>
 	{% endif %}
 </div>
+<script>
+	window.CSRF_TOKEN = `{{ csrf_token }}`
+</script>
+<script src="{% static 'news/js/article_overview.js' %}"></script>
 {% endblock %}

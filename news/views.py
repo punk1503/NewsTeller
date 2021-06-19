@@ -5,6 +5,7 @@ from news import models
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 
 
 def index(request):
@@ -38,9 +39,10 @@ def article_overview(request, article_id):
 	}
 	if request.method == 'POST' and request.user.is_authenticated:
 		if request.user in context['article'].likers.all():
-			context['article'].likers.remove(request.user	)
+			context['article'].likers.remove(request.user)
 		else:
 			context['article'].likers.add(request.user)
+		return JsonResponse({'like_counter': context['article'].likers.all().count()})
 	return render(request, 'news/pages/article_overview.html', context)
 
 def registration(request):
