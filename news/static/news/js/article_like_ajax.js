@@ -17,6 +17,12 @@ function create_request () {
 			if (httpRequest.status == 200) {
 				const response_data = JSON.parse(httpRequest.responseText)
 				update_like_counter(response_data.like_counter)
+				let like_button = document.querySelector('.like-btn')
+				if (response_data.current_user_liked) {
+					like_button.classList.add('checked')
+				} else {
+					like_button.classList.remove('checked')
+				}
 			}
 		}
 	}

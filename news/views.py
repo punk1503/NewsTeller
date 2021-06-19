@@ -42,7 +42,10 @@ def article_overview(request, article_id):
 			context['article'].likers.remove(request.user)
 		else:
 			context['article'].likers.add(request.user)
-		return JsonResponse({'like_counter': context['article'].likers.all().count()})
+		return JsonResponse({
+			'like_counter': context['article'].likers.all().count(),
+			'current_user_liked': request.user in context['article'].likers.all()
+		})
 	return render(request, 'news/pages/article_overview.html', context)
 
 def registration(request):
