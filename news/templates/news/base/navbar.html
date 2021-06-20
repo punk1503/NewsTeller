@@ -5,18 +5,6 @@
 
 	<div class="navbar__left">
 		<a href="{% url 'index' %}" class="navbar__title">NewsTeller</a>
-
-		<form>
-			<!--TODO: add action and method attributes-->
-			<input type="text" class="navbar__search" placeholder="Article title">
-			<button class="search__confirm" type="submit">
-				<img src="{% static 'news/icons/search_white_24dp.svg' %}" alt="Search">
-			</button>
-		</form>
-
-		<a class="search__confirm" href="#" id="small_screen_search_link">
-			<img src="{% static 'news/icons/search_white_24dp.svg' %}" alt="Search">
-		</a>
 	</div>
 
 	<div class="navbar__right">
@@ -31,5 +19,4 @@
 		<a class="navbar__btn" href="{% url 'login' %}">Sign in</a>
 		{% endif %}
 	</div>
-
 </nav>
