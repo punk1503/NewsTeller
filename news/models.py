@@ -39,5 +39,5 @@ class Article(models.Model):
 	article_title = models.CharField(verbose_name='Article header', max_length=100)
 	article_text = models.TextField(verbose_name='Article text')
 	publication_date = models.DateField(verbose_name='Publication Date')
-	author = models.ForeignKey(verbose_name='Article author', to=CustomUser, on_delete=CASCADE)
-	likes = models.IntegerField(verbose_name="Likes on article", default=0)
+	author = models.ForeignKey(verbose_name='Article author', to=CustomUser, on_delete=CASCADE, related_name='author')
+	likers = models.ManyToManyField(CustomUser, related_name='likers')

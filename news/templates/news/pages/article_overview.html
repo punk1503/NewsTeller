@@ -13,5 +13,18 @@
 	<hr>
 	<p>{{ article.article_text }}</p>
 	<!--TODO: add likes and comments-->
+
+	<div class="like-box">
+		{% if user.is_authenticated %}
+			<button onclick="send_request({{ user.id }})" class="like-btn{% if user in article.likers.all %} checked{% endif %}">
+				<img src="{% static 'news/icons/favorite_border_white_24dp.svg' %}" alt="Like">
+			</button>
+		{% endif %}
+		<span>Likes:<span id="likes_span">{{ article.likers.all.count }}</span></span>
+	</div>
 </div>
+<script>
+	window.CSRF_TOKEN = `{{ csrf_token }}`
+</script>
+<script src="{% static 'news/js/article_like_ajax.js' %}"></script>
 {% endblock %}
