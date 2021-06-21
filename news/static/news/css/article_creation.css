@@ -1,7 +1,6 @@
 .article {
 	margin: auto;
 	max-width: 700px;
-	border: 2px hsl(0, 0%, 0%) solid;
 	display: flex;
 	flex-direction: column;
 	padding: 15px;
@@ -13,12 +12,13 @@
 
 .article__title {
 	font-size: 1.2rem;
-	padding: 5px;
+	padding: 7px;
 }
 
 .article__text {
 	resize: vertical;
 	font-size: 1.1rem;
+	padding: 7px;
 }
 
 .article__submit {
