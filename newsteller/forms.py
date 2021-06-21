@@ -65,5 +65,5 @@ class ArticleForm(forms.ModelForm):
 
 		widgets = {
 			'article_title': forms.TextInput(attrs={'class': 'article__title', 'type':'text', 'placeholder': 'Article title'}),
-			'article_text': forms.Textarea(attrs={'class': 'article__text', 'placeholder': 'Article text', 'cols': 30, 'rows': 10})
+			'article_text': forms.Textarea(attrs={'class': 'article__text', 'placeholder': 'Article text', 'cols': 30, 'rows': 10, 'spellcheck': 'false'})
 		}
