@@ -83,3 +83,8 @@ def login_page(request):
 				login(request, user)
 				return redirect('index')
 	return render(request, 'news/pages/login.html', context)
+
+
+def profile_page(request):
+	context = {'pagename': 'Profile'}
+	return render(request, 'news/pages/profile_page.html', context)
