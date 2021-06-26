@@ -3,10 +3,14 @@ from django.shortcuts import redirect, render
 from newsteller import forms
 from news import models
 import datetime
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 
+def anon_check(user):
+	if user:
+		return not user.is_authenticated
+	return True
 
 def index(request):
 	ARTICLES_CNT = 10
@@ -48,9 +52,8 @@ def article_overview(request, article_id):
 		})
 	return render(request, 'news/pages/article_overview.html', context)
 
+@user_passes_test(anon_check, redirect_field_name=None, login_url='/')
 def registration(request):
-	if request.user.is_authenticated:
-		return redirect('index')
 	context = {'pagename': 'Registration'}
 
 	if request.method == 'GET':
@@ -65,10 +68,9 @@ def registration(request):
 			context['user_form'] = user_form
 	return render(request, 'news/pages/registration.html', context)
 
+@user_passes_test(anon_check, redirect_field_name=None, login_url='/')
 def login_page(request):
 	context = {'pagename': 'Sign in'}
-	if request.user.is_authenticated:
-		return redirect('index')
 
 	if request.method == 'GET':
 		context['form'] = forms.LoginForm()
