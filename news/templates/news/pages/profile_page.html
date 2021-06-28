@@ -1,0 +1,27 @@
+{% extends 'news/base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+	<link rel="stylesheet" href="{% static 'news/css/profile_page.css' %}">
+	<link rel="stylesheet" href="{% static 'news/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="profile__header">
+		<img src="{{ current_user.avatar.url }}" alt="username" class="header__avatar">
+		<div class="header__name">{{ current_user.first_name }} {{ current_user.last_name }}</div>
+		<span class="header__username">@{{ current_user.username }}</span>
+	</div>
+	<div class="last-articles">
+		<h3>Last articles</h3>
+		<ul class="news-list">
+			{% for article in current_user_articles %}
+				<li class="news-list__article">
+					<h4 class="article__title"><a href="{% url 'article_overview' article.id %}">{{ article.article_title }}</a></h4>
+					<p class="article__preview-text">{{ article.article_text|truncatewords:10 }}</p>
+					<span>{{ article.publication_date }}</span>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
