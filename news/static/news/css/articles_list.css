@@ -1,0 +1,35 @@
+.news-list {
+	list-style: none;
+	padding: 0;
+}
+
+.news-list:last-child {
+	border-bottom: none
+}
+
+.news-list__article {
+	border-bottom: 1px black solid;
+	overflow: hidden;
+}
+
+.article__title > a {
+	text-decoration: none;
+	color: black;
+}
+
+.article__title > a:hover {
+	color: red;
+}
+
+.article__preview-text {
+	color: hsl(0, 0%, 50%);
+}
+
+.author-link, .author-link:visited {
+	color: hsl(0, 0%, 40%);
+	text-decoration: none;
+}
+
+.author-link:hover {
+	color: tomato;
+}
