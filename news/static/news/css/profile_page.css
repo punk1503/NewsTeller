@@ -16,14 +16,20 @@
 	height: 120px;
 }
 
-.header__username {
+.header__name {
 	font-size: 1.5em;
 }
 
-.header__status {
+.header__username {
 	color: grey;
 }
 
 .header__followers {
 	color: darkslateblue;
+}
+
+
+.last-articles {
+	margin: auto;
+	max-width: 1200px;
 }

@@ -3,14 +3,23 @@
 
 {% block extra_css %}
 	<link rel="stylesheet" href="{% static 'news/css/profile_page.css' %}">
+	<link rel="stylesheet" href="{% static 'news/css/index.css' %}">
 {% endblock %}
 
 {% block content %}
 	<div class="profile__header">
 		<img src="https://placekitten.com/300/300" alt="username" class="header__avatar">
-		<div class="header__username">Vasya Ivanov</div>
-		<span class="header__status">i'm dying inside</span>
-		<span class="header__followers">0 followers</span>
+		<div class="header__name">Vasya Ivanov</div>
+		<span class="header__username">@vasya_cool</span>
 	</div>
-	<div class="last-articles"></div>
+	<div class="last-articles">
+		<h3>Last articles</h3>
+		<ul class="news-list">
+			<li class="news-list__article">
+				<h4 class="article__title"><a href="#">Заголовок статьи</a></h4>
+				<p class="article__preview-text">В Омске произошел lorem ipsum</p>
+				<span>17.02.21</span>
+			</li>
+		</ul>
+	</div>
 {% endblock %}

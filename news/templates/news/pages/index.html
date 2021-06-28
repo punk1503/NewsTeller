@@ -10,7 +10,7 @@
 		{% for article in lattest_articles %}
 		<li class="news-list__article">
 			<h4 class="article__title"><a href="{% url 'article_overview' article.id %}">{{ article.article_title }}</a></h4>
-		<p class="article__preview-text">{{ article.article_text|truncatewords:10 }}</p>
+			<p class="article__preview-text">{{ article.article_text|truncatewords:10 }}</p>
 			<!--TODO: add author link href-->
 			<span><a class="author-link" href="#">{{ article.author.first_name }} {{ article.author.last_name }}</a> - {{ article.publication_date }}</span>
 		</li>
