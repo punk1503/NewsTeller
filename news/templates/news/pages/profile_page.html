@@ -8,18 +8,20 @@
 
 {% block content %}
 	<div class="profile__header">
-		<img src="https://placekitten.com/300/300" alt="username" class="header__avatar">
-		<div class="header__name">Vasya Ivanov</div>
-		<span class="header__username">@vasya_cool</span>
+		<img src="{{ current_user.avatar.url }}" alt="username" class="header__avatar">
+		<div class="header__name">{{ current_user.first_name }} {{ current_user.last_name }}</div>
+		<span class="header__username">@{{ current_user.username }}</span>
 	</div>
 	<div class="last-articles">
 		<h3>Last articles</h3>
 		<ul class="news-list">
-			<li class="news-list__article">
-				<h4 class="article__title"><a href="#">Заголовок статьи</a></h4>
-				<p class="article__preview-text">В Омске произошел lorem ipsum</p>
-				<span>17.02.21</span>
-			</li>
+			{% for article in current_user_articles %}
+				<li class="news-list__article">
+					<h4 class="article__title"><a href="{% url 'article_overview' article.id %}">{{ article.article_title }}</a></h4>
+					<p class="article__preview-text">{{ article.article_text|truncatewords:10 }}</p>
+					<span>{{ article.publication_date }}</span>
+				</li>
+			{% endfor %}
 		</ul>
 	</div>
 {% endblock %}
