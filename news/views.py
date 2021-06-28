@@ -89,7 +89,7 @@ def profile_page(request, username):
 	context = {'pagename': 'Profile'}
 	current_user = models.CustomUser.objects.get(username=username)
 	if current_user:
-		current_user_articles = models.Article.objects.filter(author=current_user)
+		current_user_articles = models.Article.objects.filter(author=current_user).order_by('-publication_date')[:10]
 
 	context['current_user'] = current_user
 	context['current_user_articles'] = current_user_articles
