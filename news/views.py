@@ -41,6 +41,8 @@ def article_overview(request, article_id):
 		'pagename': 'Article',
 		'article': models.Article.objects.get(id=article_id)
 	}
+	context['hashtags'] = context['article'].hashtags.split()
+
 	if request.method == 'POST' and request.user.is_authenticated:
 		if request.user in context['article'].likers.all():
 			context['article'].likers.remove(request.user)
