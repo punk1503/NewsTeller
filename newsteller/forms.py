@@ -61,9 +61,16 @@ class LoginForm(forms.Form):
 class ArticleForm(forms.ModelForm):
 	class Meta:
 		model = Article
-		fields = ['article_title', 'article_text']
+		fields = ['article_title', 'article_text', 'hashtags']
 
 		widgets = {
-			'article_title': forms.TextInput(attrs={'class': 'article__title', 'type':'text', 'placeholder': 'Article title'}),
-			'article_text': forms.Textarea(attrs={'class': 'article__text', 'placeholder': 'Article text', 'cols': 30, 'rows': 10, 'spellcheck': 'false'})
+			'article_title': forms.TextInput(attrs={
+				'class': 'article__title', 'type':'text', 'placeholder': 'Article title'
+			}),
+			'article_text': forms.Textarea(attrs={
+				'class': 'article__text', 'placeholder': 'Article text', 'cols': 30, 'rows': 10, 'spellcheck': 'false'
+			}),
+			'hashtags': forms.TextInput(attrs={
+				'class': 'article__title', 'type':'text', 'placeholder': 'Hashtags (separate with space)'
+			})
 		}

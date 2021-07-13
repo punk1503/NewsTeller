@@ -41,3 +41,4 @@ class Article(models.Model):
 	publication_date = models.DateField(verbose_name='Publication Date')
 	author = models.ForeignKey(verbose_name='Article author', to=CustomUser, on_delete=CASCADE, related_name='author')
 	likers = models.ManyToManyField(CustomUser, related_name='likers')
+	hashtags = models.TextField(verbose_name='Article hashtags', default='') # field value example: "lorem ipsum dolor sit"
