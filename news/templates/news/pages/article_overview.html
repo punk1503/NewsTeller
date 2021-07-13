@@ -14,9 +14,11 @@
 	<p>{{ article.article_text }}</p>
 	{% if hashtags %}
 		<strong>Tags: </strong>
-		{% for hashtag in hashtags %}
-			<span>{{hashtag}},</span>
-		{% endfor %}
+		<div class="hashtag-block">
+			{% for hashtag in hashtags %}
+				<span>{{hashtag}}</span>
+			{% endfor %}
+		</div>
 	{% endif %}
 	<!--TODO:comments-->
 
