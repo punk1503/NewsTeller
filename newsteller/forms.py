@@ -74,3 +74,7 @@ class ArticleForm(forms.ModelForm):
 				'class': 'article__title', 'type':'text', 'placeholder': 'Hashtags (separate with space)'
 			})
 		}
+
+	def clean(self):
+		self.cleaned_data['hashtags'] = self.cleaned_data['hashtags'].replace('#', '').strip()
+		return super().clean()
