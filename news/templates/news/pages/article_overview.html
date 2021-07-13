@@ -12,7 +12,10 @@
 	<span><a class="author__link" href="#">{{ article.author.first_name }} {{ article.author.last_name }}</a> - {{ article.publication_date }}</span>
 	<hr>
 	<p>{{ article.article_text }}</p>
-	<!--TODO: add likes and comments-->
+	{% for hashtag in hashtags %}
+		<span>#{{hashtag}}</span>
+	{% endfor %}
+	<!--TODO:comments-->
 
 	<div class="like-box">
 		{% if user.is_authenticated %}
