@@ -12,9 +12,12 @@
 	<span><a class="author__link" href="#">{{ article.author.first_name }} {{ article.author.last_name }}</a> - {{ article.publication_date }}</span>
 	<hr>
 	<p>{{ article.article_text }}</p>
-	{% for hashtag in hashtags %}
-		<span>#{{hashtag}}</span>
-	{% endfor %}
+	{% if hashtags %}
+		<strong>Tags: </strong>
+		{% for hashtag in hashtags %}
+			<span>{{hashtag}},</span>
+		{% endfor %}
+	{% endif %}
 	<!--TODO:comments-->
 
 	<div class="like-box">
